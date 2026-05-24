@@ -1,0 +1,36 @@
+{
+  "id": "fd41c918-b88b-4b20-a0a5-a4c32391aaa0",
+  "timestamp": "2026-05-24T10:15:00.000Z",
+  "actor": {
+    "objectType": "Agent",
+    "account": {
+      "homePage": "https://lms.example.com",
+      "name": "learner-7421"
+    }
+  },
+  "verb": {
+    "id": "http://adlnet.gov/expapi/verbs/completed",
+    "display": { "en": "completed" }
+  },
+  "object": {
+    "objectType": "Activity",
+    "id": "https://example.com/courses/posh-awareness/v3",
+    "definition": {
+      "name": { "en": "POSH Awareness — Module 3" },
+      "type": "https://w3id.org/xapi/cmi5/activitytype/course"
+    }
+  },
+  "result": {
+    "completion": true,
+    "duration": "PT8M42S",
+    "score": { "scaled": 0.92, "raw": 92, "min": 0, "max": 100 }
+  },
+  "context": {
+    "registration": "b3c5a9d2-8e44-4f12-9b6e-1c2d3e4f5a6b",
+    "contextActivities": {
+      "category": [
+        { "id": "https://w3id.org/xapi/cmi5/context/categories/moveon" }
+      ]
+    }
+  }
+}

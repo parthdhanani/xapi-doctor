@@ -1,0 +1,16 @@
+[
+  {
+    "id": "11111111-2222-4333-8444-555555555555",
+    "actor": { "objectType": "Agent", "account": { "homePage": "https://lms.example.com", "name": "L1" } },
+    "verb": { "id": "http://adlnet.gov/expapi/verbs/launched", "display": { "en": "launched" } },
+    "object": { "objectType": "Activity", "id": "https://example.com/courses/a" },
+    "context": { "registration": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee" }
+  },
+  {
+    "id": "22222222-3333-4444-8555-666666666666",
+    "actor": { "objectType": "Agent", "account": { "homePage": "https://lms.example.com", "name": "L1" } },
+    "verb": { "id": "http://adlnet.gov/expapi/verbs/initialized", "display": { "en": "initialized" } },
+    "object": { "objectType": "Activity", "id": "https://example.com/courses/a" },
+    "context": { "registration": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee" }
+  }
+]

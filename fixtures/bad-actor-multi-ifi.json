@@ -1,0 +1,21 @@
+{
+  "id": "not-a-uuid",
+  "actor": {
+    "mbox": "mailto:learner@example.com",
+    "openid": "https://example.com/openid/learner-7421"
+  },
+  "verb": {
+    "id": "http://adlnet.gov/expapi/verbs/experienced",
+    "display": { "fr": "expérimenté" }
+  },
+  "object": {
+    "id": "not-an-iri"
+  },
+  "result": {
+    "score": { "scaled": 1.5 },
+    "duration": "8 minutes"
+  },
+  "context": {
+    "registration": "also-not-a-uuid"
+  }
+}

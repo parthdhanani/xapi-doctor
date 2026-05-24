@@ -1,0 +1,17 @@
+{
+  "id": "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee",
+  "timestamp": "2026-05-24T10:15:00.000Z",
+  "actor": {
+    "objectType": "Agent",
+    "mbox": "mailto:learner@example.com"
+  },
+  "verb": {
+    "id": "http://adlnet.gov/expapi/verbs/passed",
+    "display": { "en": "passed" }
+  },
+  "object": {
+    "objectType": "Activity",
+    "id": "https://example.com/courses/compliance-2026"
+  },
+  "result": { "success": true, "score": { "scaled": 0.85 } }
+}

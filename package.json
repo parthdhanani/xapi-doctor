@@ -1,0 +1,26 @@
+{
+  "name": "xapi-doctor",
+  "version": "0.1.0",
+  "description": "Diagnose xAPI statements and LRS connectivity: lint statements against the 1.0.3 spec + cmi5 profile, ping an LRS, POST and report.",
+  "bin": {
+    "xapi-doctor": "bin/xapi-doctor.js"
+  },
+  "scripts": {
+    "test": "node test/run.js"
+  },
+  "keywords": ["xapi", "tin-can", "lrs", "cmi5", "elearning", "learning-engineering", "cli", "lint"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/parthdhanani/xapi-doctor"
+  }
+}
