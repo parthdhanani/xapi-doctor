@@ -33,10 +33,6 @@ function main() {
     process.exit(args.help ? 0 : 2);
   }
   var file = args.positional[0];
-  if (!fs.existsSync(file)) {
-    console.error("xapi-doctor lint: file not found: " + file);
-    process.exit(2);
-  }
   var raw;
   try { raw = fs.readFileSync(file, "utf8"); }
   catch (e) { console.error("xapi-doctor lint: cannot read " + file + ": " + e.message); process.exit(2); }

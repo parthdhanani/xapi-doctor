@@ -9,7 +9,16 @@
     "test": "node test/run.js"
   },
   "keywords": ["xapi", "tin-can", "lrs", "cmi5", "elearning", "learning-engineering", "cli", "lint"],
+  "author": {
+    "name": "Parth Dhanani",
+    "email": "parth1707ster@gmail.com",
+    "url": "https://psidex.com"
+  },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/parthdhanani/xapi-doctor/issues"
+  },
+  "homepage": "https://github.com/parthdhanani/xapi-doctor#readme",
   "engines": {
     "node": ">=18"
   },

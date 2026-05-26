@@ -3,7 +3,6 @@
 
 var http = require("http");
 var https = require("https");
-var url = require("url");
 
 var HELP = [
   "xapi-doctor ping — check LRS reachability, headers, and version handshake",
@@ -32,12 +31,12 @@ function parseArgs(argv) {
 
 function request(opts, body) {
   return new Promise(function (resolve) {
-    var u = url.parse(opts.url);
+    var u = new URL(opts.url);
     var lib = u.protocol === "https:" ? https : http;
     var req = lib.request({
       hostname: u.hostname,
       port: u.port || (u.protocol === "https:" ? 443 : 80),
-      path: u.path,
+      path: u.pathname + u.search,
       method: opts.method,
       headers: opts.headers,
       timeout: opts.timeout,
