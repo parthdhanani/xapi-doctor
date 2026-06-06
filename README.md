@@ -98,3 +98,47 @@ npm test
 ## License
 
 MIT. See `LICENSE`.
+
+## Validation rules
+
+26 xAPI 1.0.3 rules + 4 cmi5 profile rules (enabled with `--profile cmi5`). Each rule maps to a spec section.
+
+### xAPI 1.0.3 base rules
+
+| # | ID | Level | What it checks | Spec ref |
+|---|----|-------|---------------|----------|
+| 1 | `stmt-actor-missing` | error | `statement.actor` is required | §2.3 |
+| 2 | `stmt-verb-missing` | error | `statement.verb` is required | §2.3 |
+| 3 | `stmt-object-missing` | error | `statement.object` is required | §2.3 |
+| 4 | `stmt-id-not-uuid` | error | `statement.id` must be a UUID (RFC 4122) | §4.1.1 |
+| 5 | `stmt-timestamp-bad` | error | `statement.timestamp` must be ISO-8601 with timezone | §4.1.2 |
+| 6 | `stmt-stored-bad` | error | `statement.stored` must be ISO-8601 with timezone | §4.1.2 |
+| 7 | `stmt-version-bad` | warning | `statement.version` must look like `1.0.x` | §4.1.10 |
+| 8 | `actor-objectType-bad` | error | `actor.objectType`, if present, must be `Agent` or `Group` | §2.4.1 |
+| 9 | `actor-no-ifi` | error | Actor needs exactly one IFI: `mbox`, `mbox_sha1sum`, `openid`, or `account` | §2.4.1 |
+| 10 | `actor-multiple-ifi` | error | Actor has more than one IFI — exactly one required | §2.4.1 |
+| 11 | `actor-mbox-bad` | error | `actor.mbox` must be `mailto:user@host.tld` | §2.4.1 |
+| 12 | `actor-account-bad` | error | `actor.account` requires `homePage` (IRI) and `name` (string) | §2.4.1 |
+| 13 | `actor-openid-bad` | error | `actor.openid` must be an IRI | §2.4.1 |
+| 14 | `verb-id-missing` | error | `verb.id` is required | §2.4.2 |
+| 15 | `verb-id-not-iri` | error | `verb.id` must be an IRI | §2.4.2 |
+| 16 | `verb-display-missing` | warning | `verb.display` is a strongly-recommended language map | §2.4.2 |
+| 17 | `verb-display-lang` | warning | `verb.display` should include an `en` entry | §2.4.2 |
+| 18 | `object-id-missing` | error | `object.id` is required | §2.4.4 |
+| 19 | `object-id-not-iri` | error | `object.id` must be an IRI | §2.4.4 |
+| 20 | `object-objectType-bad` | warning | `object.objectType`, when set, should be `Activity` for SCORM-style statements | §2.4.4 |
+| 21 | `object-def-type-bad` | error | `object.definition.type` must be an IRI when present | §2.4.4 |
+| 22 | `result-score-range` | error | `result.score.scaled` in `[-1.0, 1.0]`; `raw` between `min` and `max` | §2.4.5 |
+| 23 | `result-duration-bad` | error | `result.duration` must be ISO-8601 duration (e.g. `PT4M33S`) | §2.4.5 |
+| 24 | `ctx-registration-uuid` | error | `context.registration` must be a UUID | §2.4.6 |
+| 25 | `ctx-revision-on-agent` | error | `context.revision` is only valid when `object` is an Activity | §2.4.6 |
+| 26 | `ctx-platform-on-agent` | error | `context.platform` is only valid when `object` is an Activity | §2.4.6 |
+
+### cmi5 profile rules (`--profile cmi5`)
+
+| # | ID | Level | What it checks | Spec ref |
+|---|----|-------|---------------|----------|
+| 27 | `cmi5-reserved-verb` | warning | cmi5 reserved verbs (Launched / Initialized / Completed / Passed / Failed / Abandoned / Waived / Terminated / Satisfied) used outside the correct lifecycle position | cmi5 §9.3 |
+| 28 | `cmi5-no-registration` | error | cmi5 statements must carry `context.registration` (the launch session) | cmi5 §10.0 |
+| 29 | `cmi5-cat-activity` | warning | `Passed` / `Failed` / `Completed` must include the `https://w3id.org/xapi/cmi5/context/categories/moveon` category activity | cmi5 §10.0 |
+| 30 | `cmi5-no-account` | warning | cmi5 LMSs always use `actor.account` (not `mbox`) — `mbox`-only actor may not match the LMS-assigned learner | cmi5 §8.1.3 |
