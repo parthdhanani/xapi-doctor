@@ -9,7 +9,7 @@
 **Diagnose xAPI statements and LRS connectivity.** Three subcommands. Zero runtime dependencies. Built because the most common xAPI failures — a malformed statement, a missing `X-Experience-API-Version` header, an LRS that 401s for reasons the dashboard doesn't explain — should be findable in seconds, not in an LRS log dive.
 
 ```bash
-npm install -g xapi-doctor
+npm install -g github:parthdhanani/xapi-doctor   # installs from source (not yet on npm)
 
 xapi-doctor lint  statement.json --profile cmi5
 xapi-doctor ping  https://lrs.example.com/data/xAPI/ --auth user:pass
