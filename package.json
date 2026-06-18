@@ -6,9 +6,19 @@
     "xapi-doctor": "bin/xapi-doctor.js"
   },
   "scripts": {
-    "test": "node test/run.js"
+    "test": "node test/run.js",
+    "lint": "eslint ."
   },
-  "keywords": ["xapi", "tin-can", "lrs", "cmi5", "elearning", "learning-engineering", "cli", "lint"],
+  "keywords": [
+    "xapi",
+    "tin-can",
+    "lrs",
+    "cmi5",
+    "elearning",
+    "learning-engineering",
+    "cli",
+    "lint"
+  ],
   "author": {
     "name": "Parth Dhanani",
     "email": "parth1707ster@gmail.com",
@@ -31,5 +41,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/parthdhanani/xapi-doctor"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0"
   }
 }
