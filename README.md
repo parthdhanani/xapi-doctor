@@ -82,17 +82,43 @@ The `--profile cmi5` flag is forwarded to the lint pass.
 ```bash
 git clone https://github.com/parthdhanani/xapi-doctor
 cd xapi-doctor
-npm test
+node bin/xapi-doctor.js lint fixtures/cmi5-missing-moveon.json --profile cmi5
 ```
 
-Zero runtime deps; `npm install` is not required to run.
+Zero runtime deps, so you don't need `npm install` to run it. The fixture above is intentionally broken and prints:
+
+```
+xapi-doctor lint fixtures/cmi5-missing-moveon.json  (profile: cmi5)  — 1 statement
+  ✗ [error] statement[0]  cmi5-no-registration: cmi5 statements must carry context.registration (the launch session) — http://adlnet.gov/expapi/verbs/passed
+  ! [warning] statement[0]  cmi5-no-account: cmi5 LMSs always use actor.account (not mbox) — mbox here may not match the LMS-assigned actor
+  ! [warning] statement[0]  cmi5-cat-activity: cmi5 statements must include the 'moveOn' / 'masteryScore' cmi5 category context activity for completion-bearing verbs — http://adlnet.gov/expapi/verbs/passed
+
+  1 error(s), 2 warning(s)
+```
+
+(exit code `2`). `fixtures/valid-cmi5-completed.json` is the clean counterpart.
 
 ## Tests
 
-17 tests in `test/run.js`. The HTTP tests spin up a mock LRS on a random local port and exercise `ping` / `send` against it.
+17 tests in `test/run.js`. The HTTP tests spin up a mock LRS on a random local port and exercise `ping` / `send` against it, so the suite needs no network and no real LRS.
 
 ```bash
-npm test
+npm ci             # dev-only: eslint
+npm test           # 17 tests
+npm run lint       # eslint . (expects 0 errors, 0 warnings)
+```
+
+CI (`.github/workflows/test.yml`) runs lint on Node 22 and the tests on Node 18, 20 and 22.
+
+## Architecture
+
+```
+bin/xapi-doctor.js   CLI entry: argument parsing, exit codes, --json output
+src/statement.js     pure validator: xAPI 1.0.3 rules + the cmi5 profile layer
+src/lint.js          `lint`: loads a statement / array and formats findings
+src/ping.js          `ping`: /about, version, CORS and auth probes against an LRS
+src/send.js          `send`: lint gate, POST /statements, LRS error decoding
+fixtures/            sample good and bad statements used by tests and examples
 ```
 
 ## License

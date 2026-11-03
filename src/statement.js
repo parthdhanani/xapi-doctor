@@ -4,9 +4,9 @@
 // Spec: https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Data.md
 // cmi5 profile constraints: https://aicc.github.io/CMI-5_Spec_Current/
 
-var ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+\-]\d{2}:?\d{2})$/;
+var ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})$/;
 var UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-var IRI_RE  = /^[a-z][a-z0-9+.\-]*:\S+$/i;
+var IRI_RE  = /^[a-z][a-z0-9+.-]*:\S+$/i;
 var MBOX_RE = /^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/;
 var DURATION_RE = /^P(?!$)(\d+Y)?(\d+M)?(\d+D)?(T(\d+H)?(\d+M)?(\d+(\.\d+)?S)?)?$/;
 
